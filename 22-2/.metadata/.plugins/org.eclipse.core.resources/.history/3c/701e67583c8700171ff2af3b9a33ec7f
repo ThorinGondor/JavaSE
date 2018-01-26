@@ -1,0 +1,48 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class SearchFileDemo 
+{
+	private static JFrame JF;
+	private static Button Bt;
+	private static Container Ct;
+	private static TextField TF;
+	private static TextArea TA;
+	SearchFileDemo()
+	{
+		initialize();
+	}
+	public static void initialize()
+	{
+		//创建窗体和组件
+		JF = new JFrame("搜索目录下的文件");
+		Ct = JF.getContentPane();
+		Bt = new Button("搜索");
+		TF = new TextField(30);
+		TA = new TextArea(20,30);
+		
+		//执行功能，设计图形界面
+		Ct.add(TF);
+		Ct.add(Bt);
+		Ct.add(TA);
+		Ct.setBackground(Color.ORANGE);
+		JF.setLayout(new FlowLayout());
+		JF.setBounds(300,300,400,400);
+		
+		//事件处理
+		MyEvent();
+		//设为可视化
+		JF.setVisible(true);
+	}
+	
+	public static void MyEvent() 
+	{
+	}
+	
+	public static void main(String[] args) 
+	{
+		new SearchFileDemo();
+	}
+
+}

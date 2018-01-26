@@ -1,0 +1,33 @@
+package NFS;
+import Car.Porsche.Porsche;  //包文件.包文件.类名
+import Car.Ferrari.Ferrari;
+import City.City;
+import City.Chicago.Chicago;
+class NeedForSpeed
+{
+	public static void main(String[] args)
+	{
+		/*
+		Car.Porsche.Porsche P = new Car.Porsche.Porsche();  //此处Car.Porsche.Porsche太麻烦！想办法优化，用import.(导入)！
+		*/
+		//优化上述这行代码如上import这行!这样就可以像下面这行那样直接建立对象了，再也不需要那么长的前缀包装名了
+        Porsche P = new Porsche();
+		P.Po();
+//下同：
+		Ferrari F = new Ferrari();
+		F.Fe();
+
+		City C = new City();
+		C.Generate();
+
+		Chicago CHI = new Chicago();
+		CHI.Generate();
+	}
+}
+
+//总结：import是导入的包中的类！即xxx.class
+//jar包：
+/*
+   如果要把若干个包（例如MyClass文件下的City包和Car包）压缩到一个jar包（例如此处名称为Main.jar）当中，输入如下：
+   F:\MyClass>jar -cf Main.jar City Car
+*/

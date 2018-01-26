@@ -1,0 +1,60 @@
+/****
+集合框架的工具类.
+    Collections用法:
+	1.创建(new)一个新的集合对象，例如ArrayList AL = new ArrayList();
+	2.创建(class)一个比较器Comparator的子类，CompareTool() implements Comparator，并自定义排序方法。
+	3.完成添加一系列元素后，可以使用下列方式排序：
+	 
+	  Collections.sort(AL);
+	  Collections.max(AL);
+	  
+	  Collections.sort(AL,new CompareTool());
+	  Collections.max(AL.new CompareTool());
+      
+     Demo3：用到了下示搜索方法：
+	  Collections.binarySearch(AL,"Lopez");
+	
+  本例Demo4演示替换和反转：
+      Collections.fill(AL,"Hart");                 把AL中的所有元素换成"Hart"
+	  Collections.replaceAll(AL,"Ball","Hart");    把AL中的元素"Ball"换成"Hart"
+	  Collections.fill(AL,"Hart");                 把AL中的元素排序的先后顺序进行反转
+  
+  顺便演示一下交换集合中的元素：
+	  Collections.swap(TS,2,7);
+****/
+
+import java.util.*;
+class Demo4
+{
+	public static void main(String[] args) 
+	{
+		FillDemo();
+	}
+
+	public static void FillDemo()
+	{
+		ArrayList<String> AL = new ArrayList<String>();
+		AL.add("Ball");
+		AL.add("Nance");
+		AL.add("Clarkson");
+		AL.add("Zubac");
+		AL.add("Lopez");
+		AL.add("Pope");
+        
+		Collections.replaceAll(AL,"Ball","Russel"); //把AL中的所有元素"Ball"换成"Russel"
+		sop("replace: "+AL);
+		Collections.reverse(AL);     //反转AL元素的排列顺序
+		sop("reverse: "+AL);
+		Collections.swap(AL,2,5);    //将AL集合中的脚标为2、5的元素进行交换
+		sop("swap: "+AL);
+		Collections.shuffle(AL);     //将AL集合的元素重新进行随机排列
+		sop("shuffle: "+AL);
+		Collections.fill(AL,"Hart"); //用该元素替换原有所有的元素
+		sop("fill: "+AL);
+		
+	}
+	public static void sop(Object o)
+	{
+		System.out.println(o);
+	}
+}

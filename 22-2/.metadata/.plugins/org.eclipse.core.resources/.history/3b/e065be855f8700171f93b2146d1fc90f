@@ -1,0 +1,98 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+import java.io.*;
+
+public class MarkRank 
+{
+	private static JFrame JF;
+	private static Container Ct;
+	private static TextField TF1;
+	private static TextField TF2;
+	private static TextField TF3;
+	private static TextField TF4;
+	private static Button Bt ;
+	private static Button Bt2 ;
+	private static TextArea TA;
+	MarkRank()
+	{
+		initialize();
+	}
+	public void initialize()
+	{
+		//建立对象
+		JF = new JFrame("成绩排名");
+		Ct = JF.getContentPane();
+		TF1 = new TextField(30);
+		TF2 = new TextField(10);
+		TF3 = new TextField(10);
+		TF4 = new TextField(10);
+		Bt = new Button("存储");
+		Bt2 = new Button("显示排名");
+		TA = new TextArea(20,40);
+		
+		//设计图形界面
+		JF.setBounds(400, 400, 650, 400);
+		JF.setLayout(new FlowLayout());
+		Ct.add(TF1);
+		Ct.add(TF2);
+		Ct.add(TF3);
+		Ct.add(TF4);
+		Ct.add(Bt);
+		Ct.add(Bt2);
+		Ct.add(TA);
+		
+		//事件处理
+		TreeSet<Student> TS = new TreeSet<Student>(new compareTool());
+		MyEvent(TS);
+		
+		//可视化界面
+		JF.setVisible(true);
+		
+	}
+	
+	public static void MyEvent(TreeSet<Student> TS)
+	{
+		Bt.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent ME)
+			{
+				ReadAdd(TS);
+				
+			}
+		});
+		Bt2.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent ME)
+			{
+				Print(TS);
+				
+			}
+		});
+	}
+	
+	public static void ReadAdd(TreeSet<Student> TS)
+	{
+		String name = TF1.getText();
+		int Mark1 = Integer.parseInt(TF2.getText());
+		int Mark2 = Integer.parseInt(TF3.getText());
+		int Mark3 = Integer.parseInt(TF4.getText());
+		TS.add(new Student(name,Mark1,Mark2,Mark3));
+		System.out.println(name+";"+Mark1+";"+Mark2+";"+Mark3);
+	}
+	public static void Print(TreeSet<Student> TS)
+	{
+		Iterator<Student> it = TS.iterator();
+		while(it.hasNext())
+		{
+			Student s = (Student)it.next();
+			TA.append("姓名："+s.getName()+"分数："+s.getSum()+"\r\n");
+		}}
+
+	public static void main(String[] args) 
+	{
+		new MarkRank();
+	}
+
+}

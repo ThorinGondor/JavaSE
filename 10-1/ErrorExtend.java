@@ -1,0 +1,62 @@
+/*
+    异常在父子类覆盖中的体现：
+	1.子类在覆盖父类时，当父类抛出异常时，子类只能抛出父类的异常或者该异常的子类异常。
+	2.如果父类抛出多个异常，则子类只能抛出父类异常的子集。
+	下面程序将展示第一点
+*/
+/*****************************/
+/* 先自定义两个异常，异常2是异常1的子类*/
+class Fault1 extends Exception
+{
+	Fault1(String msg)
+	{super(msg);}
+}
+class Fault2 extends Fault1
+{
+	Fault2(String msg)
+	{super(msg);}
+}
+/*****************************/
+/*父子类对象*/
+class Nokia
+{
+	int state = 1;
+	public void Run()throws Fault1
+	{
+		if(state==0)
+			throw new Fault1("父类异常！");
+	}
+}
+class Iphone extends Nokia
+{
+	public void Run()throws Fault2
+	{
+		if(state==1)
+			throw new Fault2("子类异常！");
+	}
+}
+/******************************/
+/*主程序*/
+class Function
+{
+	public void Function(Nokia N)
+	{
+		try
+		{
+			N.Run();
+		}
+		catch (Fault1 F1)
+		{
+			F1.printStackTrace();
+		}
+		
+	}
+}
+class ErrorExtend
+{
+	public static void main(String[] args)
+	{
+		Function F = new Function();
+		F.Function(new Iphone());
+	}
+}

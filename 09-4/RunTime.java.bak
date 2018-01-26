@@ -1,0 +1,31 @@
+
+class APP
+{
+	int Work(int a, int b)throws ArithmeticException
+	{
+		if(b==0)
+		{
+			throw new ArithmeticException();  //特殊情况：ArithmeticException不需要try和catch，直接扔出（throw）即可
+		}
+		return a/b;
+	}
+}
+class runtime
+{
+	public static void main(String[] args)
+	{
+		APP ap = new APP();
+		//try
+		//{
+		 	int x = ap.Work(9,0);
+		    System.out.println("除法结果是"+x);
+		    System.out.println("Over");
+		//}
+		//catch (ArithmeticException AE)
+		//{
+		//	System.out.println("除数不能为零");
+		//	AE.printStackTrace();
+		//}
+		
+	}
+}

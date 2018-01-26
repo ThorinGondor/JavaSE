@@ -1,0 +1,52 @@
+import java.net.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.IOException;
+public class UDP_Client2 
+{
+	UDP_Client2()
+	{
+		Initialize();
+	}
+	
+	public static void Initialize()
+	{
+		
+	}
+/****************************************************************/
+	public static void main(String[] args)throws IOException  
+	{
+		new UDP_Client2();
+		UDP_System();
+
+	}
+	
+	public static void UDP_System() throws IOException
+	{
+		SendSystem();
+		ReceiveSystem();
+	}
+	public static void SendSystem() throws IOException
+	{
+		DatagramSocket DS = new DatagramSocket(23100);
+		byte[] buffers = new byte[1024];
+		DatagramPacket DP = new DatagramPacket(buffers,buffers.length,InetAddress.getByName("192.168.1.106"),45200);
+		DS.send(DP);
+		DS.close();
+	}
+	public static void ReceiveSystem() throws IOException
+	{
+		DatagramSocket DS =new DatagramSocket(56700);
+		byte[] buffers = new byte[1024];
+		while(true)
+		{
+			DatagramPacket DP = new DatagramPacket(buffers,buffers.length);
+		    DS.receive(DP);
+		    String IP = DS.getLocalAddress().getHostAddress();
+		    String name = DS.getLocalAddress().getHostName();
+		    String str = new String(DP.getData());	
+		}		
+	}
+
+}

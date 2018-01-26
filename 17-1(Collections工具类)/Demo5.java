@@ -1,0 +1,79 @@
+/****
+集合框架的工具类.
+    Collections用法:
+	1.创建(new)一个新的集合对象，例如ArrayList AL = new ArrayList();
+	2.创建(class)一个比较器Comparator的子类，CompareTool() implements Comparator，并自定义排序方法。
+	3.完成添加一系列元素后，可以使用下列方式排序：
+	 
+	  Collections.sort(AL);
+	  Collections.max(AL);
+	  
+	  Collections.sort(AL,new CompareTool());
+	  Collections.max(AL.new CompareTool());
+      
+     Demo3：用到了下示搜索方法：
+	  Collections.binarySearch(AL,"Lopez");
+	
+     Demo4演示替换和反转：
+      Collections.fill(AL,"Hart");                 把AL中的所有元素换成"Hart"
+	  Collections.replaceAll(AL,"Ball","Hart");    把AL中的元素"Ball"换成"Hart"
+	  Collections.fill(AL,"Hart");                 把AL中的元素排序的先后顺序进行反转
+  
+   本例Demo5演示reverseOrder：
+      Collections.reverseOrder();  强制反转了TreeSet自带默认的排序方式。
+	
+****/
+import java.util.*;
+class Demo5
+{
+	public static void main(String[] args) 
+	{
+		OrderDemo();
+	}
+	public static void OrderDemo()
+	{
+		TreeSet<String> TS = new TreeSet<String>(Collections.reverseOrder());  //TreeSet默认安装字母表先后顺序排列，这里强制把默认的方法反转成后先顺序
+		TS.add("Parker");
+		TS.add("Ginobilli");
+		TS.add("Leonard");
+		TS.add("Gasol");
+		TS.add("Mills");
+		TS.add("Green");
+		TS.add("Anderson");
+		TS.add("Duncan");
+        
+		Iterator<String> it = TS.iterator();
+		while(it.hasNext())
+		{
+			sop(it.next());
+		}
+	}
+
+	public static void sop(Object o)
+	{
+		System.out.println(o);
+	}
+}
+
+/*
+class CompareTool implements Comparator<String>
+{
+	public int compare(String str1,String str2)
+	{
+		int result = 0;
+		if(str1.length()>str2.length())
+		{
+			result=1;
+		}
+		if(str1.length()<str2.length())
+		{
+			result=-1;
+		}
+		if(str1.length()==str2.length())
+		{
+			result=str1.compareTo(str2);
+		}
+		return result;
+	}
+}
+*/

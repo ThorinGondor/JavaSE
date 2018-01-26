@@ -1,0 +1,26 @@
+import java.io.*;
+class RemoveDirectory
+{
+	public static void main(String[] args)
+	{
+		create();
+	}
+	
+	public static void create()
+	{
+		File dir = new File("F:\\Javastudy\\20-2\\DDD");
+		removeDirectory(dir);
+	}
+	public static void removeDirectory(File dir)
+	{
+		File[] files = dir.listFiles();
+		for(int x=0;x<files.length;x++) //（1）通过递归方法遍历dir内部所有的文件和文件夹，并依次删除
+		{
+			if(files[x].isDirectory())
+			{removeDirectory(files[x]);}
+			else
+			System.out.println("file:"+files[x].delete());
+		}
+		System.out.println("dir"+dir.delete());  //（2）内部删除完毕后，别忘了dir这个文件夹也要删除
+	}
+}

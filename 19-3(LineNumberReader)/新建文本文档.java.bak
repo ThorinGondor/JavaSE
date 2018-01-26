@@ -1,0 +1,11 @@
+import java.io.*;
+import java.util.*;
+
+class LineNumberReaderDemo 
+{
+	public static void main(String[] args)throws IOException
+	{
+		FileReader FR = new FileReader("Demo.txt");
+		LineNumberReader LNR = new LineNumberReader(FR);
+	}
+}

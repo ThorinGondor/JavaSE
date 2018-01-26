@@ -1,0 +1,8 @@
+package packC;
+public class PackC
+{
+	protected void Work()
+	{
+		System.out.println("This is PackC!");
+	}
+}

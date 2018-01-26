@@ -1,0 +1,4 @@
+Student:¡¾Name:ãÉ½Ü; Sum:284¡¿
+Student:¡¾Name:Àî·æ; Sum:276¡¿
+Student:¡¾Name:Ì·ÏşÃ÷; Sum:249¡¿
+Student:¡¾Name:ÀîöÎÔó; Sum:245¡¿

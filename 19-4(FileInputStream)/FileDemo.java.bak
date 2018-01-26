@@ -1,0 +1,27 @@
+/***
+   字符流File读写操作：
+   FileReader();
+   FileWriter();
+   （加入）缓冲工具：
+   BufferedReader();
+   BufferedWriter();
+   
+   字节流读写操作：
+   InputStream
+      |---FileInputStream();
+   OutputStream
+      |---FileOutputStream();
+   需求：想要操作图片数据，这时候就需要用到字节流。
+
+   字节流操作的是字节类型byte，而字符流的数据是String类和char类
+***/
+import java.util.*;
+import java.io.*;
+
+class FileStream
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("Hello World!");
+	}
+}

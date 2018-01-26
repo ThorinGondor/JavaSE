@@ -1,0 +1,8 @@
+package City.Chicago;
+public class Chicago
+{
+	public void Generate()
+	{
+		System.out.println("Chicago Generated!");
+	}
+}

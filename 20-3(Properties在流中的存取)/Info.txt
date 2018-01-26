@@ -1,0 +1,8 @@
+#Shit
+#Sun Aug 20 12:43:50 CST 2017
+Green=23
+Durant=35
+NickYoung=6
+Thompson=11
+J20=J31
+Curry=30

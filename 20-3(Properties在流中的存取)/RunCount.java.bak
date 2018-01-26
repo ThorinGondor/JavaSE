@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.*;
+
+class RunCount
+{
+	public static void main(String[] args) throws IOException
+	{
+		Properties prop = new Properties();
+		
+		/***（1）Txt的内容进入Properties**/
+		FileInputStream FIS = new FileInputStream("count.ini");
+		prop.load(FIS); //将FIS流中的数据加载到了prop集合中
+        
+		/***（2）修改Properties内部的该内容***/
+		int count = 0;
+		String value=prop.getProperty("time");
+		count = Integer.parseInt(value);  //将该String类的value强转成int类
+		count++;
+		prop.setProperty("time",count+"");
+        
+		/***（3）将该修改后的内容返回txt文件***/
+		FileOutputStream FOS = new FileOutputStream("count.ini");
+		prop.store(FOS,"Accumlate");
+	}
+}

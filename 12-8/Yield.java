@@ -1,0 +1,31 @@
+/**
+  yield(); 暂停当前正在执行的线程对象，并执行其他线程
+  起到的作用其实是稍微减缓一下该线程的执行频率，并非冻结该线程等待其他线程
+**/
+class CPU implements Runnable
+{
+	public void run()
+	{
+		for(int x=0;x<100;x++)
+		{
+			System.out.println(Thread.currentThread().toString()+"----"+x);
+		}
+	}
+}
+class Yield
+{
+	public static void main(String[] args)
+	{
+		CPU cpu = new CPU();
+		Thread T0 = new Thread(cpu);
+		Thread T1 = new Thread(cpu);
+		T0.start();
+		T0.yield();
+		T1.start();
+		for(int x=0;x<120;x++)
+		{
+			System.out.println("Main函数-----"+x);
+		}
+        System.out.println("Over!");
+	}
+}

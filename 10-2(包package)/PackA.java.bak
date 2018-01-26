@@ -1,0 +1,12 @@
+
+package packA;
+
+public class PackA extends packC.PackC
+{
+	public void Run()
+	{
+		System.out.println("This is PackA!");
+		Work();
+	}
+	
+}

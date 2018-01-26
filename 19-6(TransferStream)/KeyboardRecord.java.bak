@@ -1,0 +1,31 @@
+import java.io.*;
+class KeyboardRecord
+{
+	public static void main(String[] args)throws IOException
+	{
+		record();
+	}
+
+	public static void record()throws IOException
+	{
+		InputStream IS = System.in; //创建一个字节读取流，读取键盘输入的数据
+		InputStreamReader ISR = new InputStreamReader(IS); //将字节读取流转化为字符读取流
+        //添加缓冲技术
+		BufferedReader BR = new BufferedReader(ISR);
+
+		FileWriter FW = new FileWriter("Record.txt",true);
+		BufferedWriter BW = new BufferedWriter(FW);
+		
+		while(true)
+		{
+			String str = BR.readLine();
+			if("over".equals(str)){break;}
+			BW.write(str.toUpperCase());  //顺便讲个内容xxx.toUpperCase();该方法可以让String全大写
+			BW.flush();
+			System.out.println("【已记录，请继续输入】");
+			BW.newLine();
+		}
+		BW.close();
+		ISR.close();
+	}
+}

@@ -1,0 +1,17 @@
+import java.util.*;
+import java.io.*;
+class Person //implements Serializable//继承Serializable可以使该类及其对象可以被ObjectInputStream操作（读取）
+{
+	//public static final long serialVersionUID = 42L; //序列化以后，该类的内容不管是private还是public都可以被ObjectInputStream任意访问
+	String name;
+	int num;
+	Person(String name,int num)
+	{
+		this.name=name;
+		this.num=num;
+	}
+	public String toString() //对象转化为String类型时输出的内容
+	{
+		return name+":"+num;
+	}
+}

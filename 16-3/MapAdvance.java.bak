@@ -1,0 +1,37 @@
+/***
+Map扩展知识：
+Map集合被使用是因为具备映射关系。
+
+大Map集合嵌套了一个小Map集合
+***/
+import java.util.*;
+class MapAdvance
+{
+	public static void main(String[] args) 
+	{
+		HashMap<String,String> ClassA = new HashMap<String,String>();
+		ClassA.put("01","Li");
+		ClassA.put("02","Wang");
+
+		HashMap<String,String> ClassB = new HashMap<String,String>();
+		ClassB.put("01","Zhang");
+		ClassB.put("02","Zhao");
+
+		HashMap<String,Map<String,String>> Grade = new HashMap<String,Map<String,String>>();
+		Grade.put("01",ClassA);
+		Grade.put("02",ClassB);
+
+		getStudent(ClassA);
+	}
+
+	public static void getStudent(HashMap<String,String> map)
+	{
+		Iterator<String> it = map.keySet().iterator();
+		while(it.hasNext())
+		{
+			String id = it.next();
+			String name = map.get(id);
+			System.out.println(id+":"+name);
+		}
+	}
+}

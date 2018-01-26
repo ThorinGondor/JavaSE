@@ -1,0 +1,10 @@
+/****
+    TCPºÍUDP£º
+****/
+import java.net.*;
+
+class TCP_UDP
+{
+	public static void main(String[] args)
+	{}
+}

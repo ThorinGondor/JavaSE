@@ -1,0 +1,44 @@
+/***
+本例演示PrintWriter();和PrintReader();
+
+按照之前所学，打印出去是System.out，如果是字节类型，这需要我们特地创建一个字节输出流FileOutputStream，目标是"System.out"，
+                                    如果是字符类型，则需要创建新的字符输出流：FileWriter--->BufferedWriter,BW.write(System.out);
+			  这很麻烦!!!
+
+打印流：
+该流专门提供了打印方法，可以将各种数据类型的数据原样打印。
+  |---字节打印流 类：
+      PrintStream，可以接收的参数类型：（1）file对象（2）字符串路径String（3）字节输出流 OutputStream
+  
+  |---字符打印流 类：【比字节打印流更常用,该类通用性极强】
+      PrintWriter，可以接收的参数类型：（1）file对象（2）字符串路径String（3）字节输出流OutputStream （4）字符输出流 FileWriter
+	  用法：new一个PrintWriter的对象out，然后用函数功能：out.write(str);out.flush(); ---> out.close();即可
+	                                                或者：out.println(); ---> out.close();即可
+***/
+import java.io.*;
+import java.util.*;
+
+class PrintWR
+{
+	public static void main(String[] args) throws IOException
+	{
+		//创建字节读取流为键盘输入
+		InputStream FIS = System.in;
+		//字节读取流换字符读取流
+		InputStreamReader ISR = new InputStreamReader(FIS);
+		//加入字符读取流的缓存技术
+		BufferedReader BR = new BufferedReader(ISR);
+        //创建打印流的对象out
+		PrintWriter out = new PrintWriter(System.out);
+		
+		while(true)
+		{
+			String str = BR.readLine();
+			if("over".equals(str)){break;}
+			//out.write(str);  //一行数据写入PrintWriter自带的缓冲区
+			//out.flush();
+			out.println(str);  //将一行数据写入PrintWriter自带的缓冲区
+		}
+		out.close();  //如果没有上边的out.flush();关闭后会打印出所有输入的数据
+	}
+}

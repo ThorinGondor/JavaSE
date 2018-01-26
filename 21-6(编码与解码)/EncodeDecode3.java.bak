@@ -1,0 +1,26 @@
+/****
+
+****/
+import java.util.*;
+import java.io.*;
+
+class EncodeDecode3
+{
+	public static void main(String[] args) throws IOException
+	{
+		FileInputStream FIS = System.in;
+		InputStreamReader ISR = new InputStreamReader(FIS);
+		BufferedReader BR = new BufferedReader(ISR);
+
+		FileOutputStream FOS = new FileOutputStream("stud.txt");
+        OutputStreamWriter OSW = new OutputStreamWriter(FOS);
+		BufferedWriter BW = new BufferedWriter(OSW);
+
+		while(true)
+		{
+			String str = BR.readLine();
+            if(str==null){break;}
+			BW.write(str);
+		}
+	}
+}

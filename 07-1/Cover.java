@@ -1,0 +1,78 @@
+
+/*
+当子类出现和父类一样名称的函数时，则对象调用该函数用的是子类的函数，称之为覆盖：子类的Same（）覆盖了父类的Same（）
+*/
+class Father
+{
+	public void Same()
+	{
+		System.out.println("Fa");
+	}
+
+	public void Speak()
+	{ 
+		System.out.println("Visual Basic");
+	}
+}
+
+class Son extends Father    //有子必继承自父
+{
+	public void Same()
+	{
+		System.out.println("So");
+	}
+
+	public void Speak()
+	{
+		System.out.println("Java EE");
+	}
+}
+
+class Cover
+{
+	public static void main(String[] args)
+	{
+		Son S1 = new Son();
+		S1.Same();    //虽然父与子都有same（），但调用的是子类里的same（），故而子类里的void Same（）被称之为覆盖
+
+		S1.Speak();
+	}
+}
+
+/*********************************************************************************************************************/
+
+class Nokia
+{
+	public void show()
+	{
+		System.out.println("Sebian");
+	}
+}
+
+class Android extends Nokia
+{
+	public void show()
+	{
+		super.show();               //在子类里使用super.函数（）可以调用父类里的函数！
+		System.out.println("Android");
+	}
+}
+
+class Iphone extends Nokia
+{
+	public void show()
+	{
+    Android A1 = new Android();
+	A1.show();                               //为什么这里用super不行？因为super直接指向最高父级的Nokia了，直接跳过了Android，无奈之下只能建立一个Android对象来调用Android的函数show（）
+	System.out.println("IOS");
+	}
+}
+
+class Cover2
+{
+	public static void main(String[] args)
+	{
+		Iphone I1 = new Iphone();
+		I1.show();
+	}
+}

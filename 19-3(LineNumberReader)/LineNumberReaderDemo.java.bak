@@ -1,0 +1,19 @@
+import java.io.*;
+import java.util.*;
+
+class LineNumberReaderDemo 
+{
+	public static void main(String[] args)throws IOException
+	{
+		FileReader FR = new FileReader("Note.txt");
+		LineNumberReader LNR = new LineNumberReader(FR);
+		LNR.setLineNumber(3);
+		while(true)
+		{
+			String str = LNR.readLine();
+			if(str==null){break;}
+			System.out.println(LNR.getLineNumber()+":"+str);
+		}
+		LNR.close();
+	}
+}

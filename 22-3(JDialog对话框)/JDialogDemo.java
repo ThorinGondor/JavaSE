@@ -1,0 +1,66 @@
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
+import java.awt.event.*;
+
+class JDialogDemo
+{
+	private static JFrame JF;
+	private static Container Ct;
+	private static JDialog JD;
+	private static Button Bt;
+	private static Button BtOK;
+	private static JLabel JL;
+	JDialogDemo()  //初始化
+	{
+		Initialize();
+	}
+	public static void Initialize()
+	{
+		//建立对象
+		JF = new JFrame("对话框Dialog演示");
+		Ct = JF.getContentPane();
+		Bt = new Button("跳出对话框");
+		BtOK = new Button("OK");
+		JD = new JDialog(JF,"Warning!",true); //(父类，标题，true)
+		JL = new JLabel("");
+		
+		//设计主窗体图形界面
+		Ct.add(Bt);
+		JF.setBounds(500,500,400,400);
+		JF.setLayout(new FlowLayout());
+		//设计对话框图形界面
+		JD.setBounds(500,500,100,100);
+		JD.setLayout(new FlowLayout());
+		JD.add(JL);  //对话框的JLabel在标题title位置
+		JD.add(BtOK);
+
+		//事件处理
+		MyEvent();
+		//可视化
+		JF.setVisible(true);
+		JD.setVisible(false);
+	}
+	public static void MyEvent()
+	{
+		Bt.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent AE)
+			{
+				JD.setVisible(true);
+			}
+		});
+
+		BtOK.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent AE)
+			{
+				JD.setVisible(false);
+			}
+		});
+	}
+	public static void main(String[] args) 
+	{
+		new JDialogDemo();
+	}
+}

@@ -1,0 +1,22 @@
+/***
+   附：
+   一般如果一个数组进行操作，需要如下代码用Arrays工具转化为List类，再进行操作。 
+   List<String> list = Arrays.asList(arr);
+
+   不过当进行排序时，也可以直接用Arrays.sort(arr);进行直接排序，不需要转化.
+   还可以在遍历输出数组的元素时，直接用Arrays.toString(arr)；进行直接输出，比利用for循环打印数组方便很多。
+   静态导入（StaticImport）：
+***/
+import java.util.*;
+import static java.lang.System.*;
+
+class StaticImport
+{
+	public static void main(String[] args)
+	{
+		int[] arr = {45,67,34,1,4,5};
+		Arrays.sort(arr);  //Arrays工具直接排序，数组arr不需要转化为List
+		int position = Arrays.binarySearch(arr,4);
+		out.println(Arrays.toString(arr)+";The position is "+position);
+	}
+}

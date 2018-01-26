@@ -1,0 +1,73 @@
+import java.util.*;
+/**
+    LinkedList特有方法：
+	1.
+	addFirst();
+	addLast();
+
+    2.
+	getFirst();
+	getLast();
+	/**获取元素，但是不删元素
+
+	3.
+	removeFirst();
+    removeLast();
+	/**获取元素，但是会删除元素
+	/**如果集合中没有元素，会出现异常：NoSuchElementException
+	因此出现替代方法：
+	1.
+	offerFirst();
+	offerLast();
+    /**添加元素
+    2.
+	peekFirst();
+	peekLast();
+    /**获取元素，元素不会被删除，若集合中没有元素，会返回null
+	3.
+	pollFirst();
+	pollLast();
+    /**获取元素，但是元素会被删除，若集合中没有元素，会返回null
+**/
+class LLPra
+{
+	public static void main(String[] args)
+	{
+		LinkedList LL = new LinkedList();
+		LL.offerFirst("Java0");
+		LL.addFirst("Java1");
+		LL.addFirst("Java2");
+		LL.addLast("Java3");
+		LL.addLast("Java4");
+		LL.addLast("Java5");
+		sop(LL);
+		ListIterator LI = LL.listIterator();
+		Object obj = new Object();
+		/***遍历集合中的每一个元素并获取该元素***/
+		while(LI.hasNext())
+		{
+			obj=LI.next();
+			sop("Next: "+obj);
+		}
+		/***增加或删减一个元素***/
+		while(LI.hasPrevious())
+		{
+			obj=LI.previous();
+			if(obj.equals("Java3"))
+			{
+				LI.add("ADD1");
+			}
+			sop("Previous: "+obj);
+		}
+		sop(LL);
+
+		sop(LL.peekFirst());  //等同于getFirst()，但是在没有元素时它可以返回null
+		sop(LL.getLast());
+	}
+
+	public static void sop(Object obj)
+	{
+		System.out.println(obj);
+	}
+	
+}

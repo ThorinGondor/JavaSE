@@ -1,0 +1,46 @@
+/*
+对多异常的处理：
+
+1.声明异常时，建议声明更具体的异常
+  eg：见第8行的：throws ArithmeticException
+
+2.对方（此处代码即App函数）声明几个异常，就对应有几个catch块。
+  如果多个catch块存在继承关系，就把父类放在第一个。
+*/
+class App
+{
+	int Run(int a, int b)throws ArithmeticException,ArrayIndexOutOfBoundsException  //此处有两个具体的异常：除数为零异常，角标越界异常
+	{
+		int[] arr = new int[a];
+		System.out.println(arr[4]);
+		return a/b;
+	}
+}
+class MultiAbnormal
+{
+	public static void main(String[] args)
+	{
+		App A = new App();
+		try
+		{
+			int j = A.Run(4,0);
+			System.out.println("The Result is "+j);
+		}
+
+		catch (ArithmeticException B)  //ArithmeticException B：用于在除数为零时获取（catch）异常信息,如果没出现除数为零的情况，该catch函数不执行！
+		{
+			System.out.println("除数不能为零！");
+			System.out.println(B.toString());
+			B.printStackTrace();
+		}
+
+		catch (ArrayIndexOutOfBoundsException B)  //ArrayIndexOutOfBoundsException B：用于在角标越界时获取异常信息，如果没出现角标越界的情况，该catch函数不执行！
+		{
+			System.out.println("角标越界了！");
+			System.out.println(B.toString());
+			B.printStackTrace();
+		}
+
+		System.out.println("Over");
+	}
+}

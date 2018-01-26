@@ -1,0 +1,37 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
+class  FrameDemo
+{
+	//设置图形界面
+	private Frame F;
+	private Button Bt;
+	FrameDemo()
+	{}
+    public void init()
+	{
+		F = new Frame("My Frame");
+		F.setBounds(300,300,300,300);//setBounds();设置坐标值和宽、高
+		F.setLayout(new FlowLayout());
+		Bt = new Button("点击");
+		F.add(Bt);
+		F.setVisible(true);
+	}
+	private void myEvent()
+	{
+		f.addWindowListener(new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				System.exit(0);
+			}
+		});
+	}
+	public static void main(String[] args) 
+	{
+		System.out.println("Hello World!");
+	}
+}

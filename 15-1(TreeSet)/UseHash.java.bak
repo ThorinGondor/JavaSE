@@ -1,0 +1,27 @@
+ /**                     Collection;
+	          List;                    Set;
+ ArrayList  LinkedList  Vector;   HashSet TreeSet;
+ 
+  Collection
+      |--List:元素是有序的，元素可以重复。因为该集合体系有索引。特点：查询速度很快，修改方便。
+	      |--ArrayList: 底层的数据结构使用的是数组结构。特点：查询很快，但是增删稍慢。(ArrayList()默认初始长度是10)
+		  |--LinkedList: 底层使用的链表数据结构
+		  |--Vector: 底层是数组数据，已经被ArrayList代替。
+	  |--Set：元素是无序的，元素不可以重复。它是一种不包含重复的Collection。(因此！因此！它可以用于筛除集合中重复的元素！)
+	      |--HashSet：底层数据结构是哈希表。线程是不同步的。保证元素唯一性的原理是判断元素的hashCode()和元素的equals()方法是否为true。
+		  |--TreeSet：
+ **/
+import java.util.*;
+
+class TreeSetDemo 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet TS = new TreeSet();
+        TS.add("Thompson");
+		TS.add("Curry");
+		TS.add("Durant");
+		TS.add("Iguodala");
+		TS.add("Green");
+	}
+}

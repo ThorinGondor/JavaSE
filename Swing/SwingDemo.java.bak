@@ -1,0 +1,27 @@
+import java.awt.*;
+import javax.swing.*;
+class SwingDemo extends JFrame
+{
+	public void CreateJFrame(String title)
+	{
+	JFrame jf = new JFrame(title);
+	Container ct = jf.getContentPane();
+	JLabel jl = new JLabel("Hello 图形界面！");
+
+	jl.setHorizontalAlignment(SwingConstants.CENTER);
+	ct.add(jl);
+
+	ct.setBackground(Color.orange);
+	jf.setVisible(true);
+	jf.setSize(300,200);
+
+	//jf.setDefultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+	public static void main(String[] args)
+    {
+		SwingDemo SD = new SwingDemo();
+		SD.CreateJFrame("创建一个JFrame窗体");
+    }
+}
+

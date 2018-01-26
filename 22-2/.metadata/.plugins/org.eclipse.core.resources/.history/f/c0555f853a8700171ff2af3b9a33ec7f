@@ -1,0 +1,28 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class SearchFileDemo 
+{
+	SearchFileDemo()
+	{
+		initialize();
+	}
+	public static void initialize()
+	{
+		JFrame JF = new JFrame("搜索目录下的文件");
+		Container Ct = JF.getContentPane();
+		Button Bt = new Button("搜索");
+		
+		Ct.add(Bt);
+		JF.setLayout(new FlowLayout());
+		JF.setBounds(300,300,300,300);
+		
+		JF.setVisible(true);
+	}
+	public static void main(String[] args) 
+	{
+		new SearchFileDemo();
+	}
+
+}

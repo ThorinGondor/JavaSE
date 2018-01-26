@@ -1,0 +1,29 @@
+import java.net.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class UDP_Client2 
+{
+	UDP_Client2()
+	{
+		Initialize();
+	}
+	
+	public static void Initialize()
+	{
+		
+	}
+	/****************************************************************/
+	public static void main(String[] args) 
+	{
+		new UDP_Client2();
+		UDP_System();
+
+	}
+	
+	public static void UDP_System()
+	{
+		
+	}
+
+}

@@ -1,0 +1,26 @@
+import java.io.*;
+
+class FileDemo3 
+{
+	public static void main(String[] args) 
+	{
+		Run();
+	}
+	public static void Run()
+	{
+		File dir = new File("F:\\Javastudy\\20-1");
+		Object[] objs = dir.list(new FilenameFilter()
+			{
+			public boolean accept(File dir,String name)
+				{
+					return name.endsWith(".java");//过滤器，只获取该类后缀的文件
+			    }
+		    }
+		);  //dir.list(new FilenameFilter(){xxx});
+
+		for(Object o :objs)
+		{
+			System.out.println(o);
+		}
+	}
+}

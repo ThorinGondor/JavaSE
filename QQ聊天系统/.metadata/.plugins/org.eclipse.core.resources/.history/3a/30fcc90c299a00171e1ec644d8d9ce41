@@ -1,0 +1,102 @@
+import java.net.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.IOException;
+
+class UDP_Client2 
+{
+	private static JFrame JF;
+	private static Container Ct;
+	private static TextField TF;
+	private static TextArea TA;
+	private static Button Bt;
+	UDP_Client2()
+	{
+		Initialize();
+	}
+	
+	public static void Initialize()
+	{
+		JF = new JFrame("QQ聊天系统——客户2");
+		Ct =JF.getContentPane();
+		Bt = new Button("点击发送");
+		TA = new TextArea(20,20);
+		TF = new TextField(30);
+		
+		Ct.add(Bt);
+		Ct.add(TA);
+		Ct.add(TF);
+		JF.setBounds(500, 500, 400, 400);
+		JF.setLayout(new FlowLayout());
+		
+		MyEvent();
+		
+		JF.setVisible(true);
+	}
+	
+	public static void MyEvent()
+	{
+		Bt.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent AE)
+			{
+				try 
+				{
+					SendSystem();
+					TF.setText(null);
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+					System.exit(0);
+				}
+			}
+		});
+		JF.addWindowListener(new WindowAdapter() 
+		{
+			public void windowClosing(WindowEvent WE)
+			{
+				System.exit(0);
+			}
+		});
+	}
+/****************************************************************/
+	public static void main(String[] args)throws IOException  
+	{
+		new UDP_Client2();
+		UDP_System();
+
+	}
+	
+	public static void UDP_System() throws IOException
+	{
+		ReceiveSystem();
+	}
+	public static void SendSystem() throws IOException
+	{
+		DatagramSocket DS = new DatagramSocket(14500);
+		byte[] buffers = new byte[1024];
+		buffers = TF.getText().getBytes();
+		DatagramPacket DP = new DatagramPacket(buffers,buffers.length,InetAddress.getByName("192.168.1.106"),62300);
+		DS.send(DP);
+		DS.close();
+	}
+	public static void ReceiveSystem() throws IOException
+	{
+		DatagramSocket DS =new DatagramSocket(56700);
+		while(true)
+		{
+			byte[] buffers = new byte[1024];
+			DatagramPacket DP = new DatagramPacket(buffers,buffers.length);
+		    DS.receive(DP);
+		    String name = DS.getLocalAddress().getHostName();
+		    String str = new String(DP.getData(),0,DP.getLength());
+		    if(str.equals("我下线了！"))
+		    	break;
+		    TA.append("对方的消息："+"--"+name+": "+str+"\r\n");
+		}
+		DS.close();
+	}
+
+}

@@ -1,0 +1,34 @@
+interface ThePort
+{
+	public abstract void Function();
+}
+class Test 
+{
+	/*
+	static class Inner implements ThePort
+	{
+		public void function()
+		{
+			System.out.println("HaHa");
+		}
+	}
+	*/
+	static ThePort method()  //²¹×ã´úÂë
+	{
+		return new ThePort()
+		{
+			public void Function()
+		    {
+			System.out.println("HaHa");
+		    }
+		}
+	}
+}
+/*****************************************/
+class InnerTest
+{
+	public static void main(String[] args)
+	{
+		Test.method().Function();
+	}
+}

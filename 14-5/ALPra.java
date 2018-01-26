@@ -1,0 +1,48 @@
+import java.util.*;
+class list
+{
+	ArrayList AL = new ArrayList();
+
+	public void Add(Object obj)
+	{
+		AL.add(obj);
+	}
+
+	public void Eliminate()
+    {
+		Iterator it = AL.iterator();
+		Object obj1 = new Object();
+        Object obj2 = new Object();
+		while(it.hasNext())
+		{
+			obj1=it.next();
+			while(it.hasNext())
+			{
+			    obj2=it.next();
+			    if(obj1==obj2)
+			    {
+				     it.remove();
+			    }
+			}
+			obj2=it.first();
+		}
+		System.out.println(AL);
+	}
+}
+class ALPra
+{
+	public static void main(String[] args)
+	{
+		list l = new list();
+		l.Add("Java1");
+		l.Add("Java1");
+		l.Add("Java2");
+		l.Add("Java3");
+		l.Add("Java4");
+		l.Add("Java1");
+        l.Add("Java5");
+		l.Add("Java6");
+		System.out.println(l.AL); //¥Ú”°ArrayListºØ∫œ
+		l.Eliminate();
+	}
+}

@@ -1,0 +1,22 @@
+import java.util.*;
+interface ThePort<E>
+{
+	public abstract void Show(E e);
+}
+
+class Card<E> implements ThePort<E>
+{
+	public void Show(E e)
+	{
+		System.out.println(e);
+	}
+}
+
+class GenericDemo5
+{
+	public static void main(String[] args)
+	{
+		Card<String> Cd = new Card<String>();
+		Cd.Show("DF");
+	}
+}

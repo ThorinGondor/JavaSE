@@ -1,0 +1,54 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
+class  FrameDemo
+{
+	//设置图形界面
+	private Frame F;
+	private Button Bt;
+	FrameDemo()
+	{
+		init();
+	}
+    public void init()
+	{
+		F = new Frame("My Frame");
+		F.setBounds(300,300,300,300);//setBounds();设置坐标值和宽、高
+		F.setLayout(new FlowLayout());
+		Bt = new Button("退出");
+		F.add(Bt);
+		myEvent();
+		F.setVisible(true);
+	}
+
+	private void myEvent()
+	{
+		F.addWindowListener(new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				System.exit(0);
+			}
+		});
+		//让按钮具备退出程序的功能
+		/***
+		按钮就是事件源,它是少数的其中一个没有适配器Adapter的
+		***/
+		Bt.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("按钮干的");
+				System.exit(0);
+			}
+		});
+	}
+
+	public static void main(String[] args) 
+	{
+		new FrameDemo();
+	}
+}
